@@ -35,9 +35,6 @@ import java.util.Scanner;
  */
 public class CityConnect {
 
-	private static final String COMMAND_TO_EXIT = "exit";
-	private static final String COMMAND_GET_DISTANCE = "getdistance";
-	private static final String COMMAND_ADD_ROUTE = "addroute";
 	/*
 	 * ==============NOTE TO STUDENTS======================================
 	 * These messages shown to the user are defined in one place for convenient
@@ -57,6 +54,9 @@ public class CityConnect {
 	private static final String MESSAGE_NO_COMMAND = "Unrecognized command type";
 	private static final String MESSAGE_NULL_COMMAND = "command type string cannot be null!";
 	private static final String MESSAGE_NO_EPOINT = "Route end points cannot be null";
+	private static final String COMMAND_TO_EXIT = "exit";
+	private static final String COMMAND_GET_DISTANCE = "getdistance";
+	private static final String COMMAND_ADD_ROUTE = "addroute";
 
 	// These are the possible command types
 	enum COMMAND_TYPE {
@@ -127,7 +127,7 @@ public class CityConnect {
 	}
 
 	public static String executeCommand(String userCommand) {
-		if (userCommand.trim().equals(""))
+		if (isStringequals(userCommand))
 			return String.format(MESSAGE_INVALID_FORMAT, userCommand);
 		
 		else {
@@ -157,6 +157,11 @@ public class CityConnect {
 		 */
 	}
 
+	private static boolean isStringequals(String command){
+		return command.trim().equals("");
+		
+	}
+	
 	/*
 	 * ==============NOTE TO STUDENTS======================================
 	 * After reading the above code, the reader should have a reasonable
