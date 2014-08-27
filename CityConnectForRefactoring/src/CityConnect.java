@@ -102,7 +102,6 @@ public class CityConnect {
 		while (true) {
 			System.out.print("Enter command:");
 			String command = scanner.nextLine();
-			//String userCommand = command;
 			String feedback = executeCommand(command);
 			showToUser(feedback);
 		}
@@ -123,23 +122,25 @@ public class CityConnect {
 	public static String executeCommand(String userCommand) {
 		if (userCommand.trim().equals(""))
 			return String.format(MESSAGE_INVALID_FORMAT, userCommand);
+		
+		else {
+			String commandTypeString = getFirstWord(userCommand);
 
-		String commandTypeString = getFirstWord(userCommand);
+			COMMAND_TYPE commandType = determineCommandType(commandTypeString);
 
-		COMMAND_TYPE commandType = determineCommandType(commandTypeString);
-
-		switch (commandType) {
-		case ADD_ROUTE:
-			return addRoute(userCommand);
-		case GET_DISTANCE:
-			return getDistance(userCommand);
-		case INVALID:
-			return String.format(MESSAGE_INVALID_FORMAT, userCommand);
-		case EXIT:
-			System.exit(0);
-		default:
-			//throw an error if the command is not recognized
-			throw new Error("Unrecognized command type");
+			switch (commandType) {
+			case ADD_ROUTE:
+				return addRoute(userCommand);
+			case GET_DISTANCE:
+				return getDistance(userCommand);
+			case INVALID:
+				return String.format(MESSAGE_INVALID_FORMAT, userCommand);
+			case EXIT:
+				System.exit(0);
+			default:
+				//throw an error if the command is not recognized
+				throw new Error("Unrecognized command type");
+			}
 		}
 		/*
 		 * ==============NOTE TO STUDENTS======================================
