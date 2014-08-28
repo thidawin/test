@@ -261,14 +261,14 @@ public class CityConnect {
 	private static String addRoute(String userCommand) {
 		
 		String[] parameters = splitParameters(removeFirstWord(userCommand));
+		String newStartLocation = parameters[PARAM_POSITION_START_LOCATION];
+		String newEndLocation = parameters[PARAM_POSITION_END_LOCATION];
+		String distance = parameters[PARAM_POSITION_DISTANCE];
 		
 		if (parameters.length < PARAM_SIZE_FOR_ADD_ROUTE){
 			return String.format(MESSAGE_INVALID_FORMAT, userCommand);
 		}
 
-		String newStartLocation = parameters[PARAM_POSITION_START_LOCATION];
-		String newEndLocation = parameters[PARAM_POSITION_END_LOCATION];
-		String distance = parameters[PARAM_POSITION_DISTANCE];
 
 		if (isPositiveNonZeroInt(distance)){
 			int slotPosition = location(newStartLocation, newEndLocation);
